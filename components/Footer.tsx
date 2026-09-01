@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { BUSINESS } from "@/lib/config";
-import { getMainProduct, getSecondProduct } from "@/lib/supabase";
+import { getMainProduct } from "@/lib/supabase";
 import PaymentIcons from "./PaymentIcons";
 import Logo from "./Logo";
 
 export default function Footer() {
   const mainProduct = getMainProduct();
-  const secondProduct = getSecondProduct();
 
   const shopLinks = [
     { label: mainProduct.name, href: `/product/${mainProduct.slug}` },
-    { label: secondProduct.name, href: `/product/${secondProduct.slug}` },
     { label: "Ingredients", href: "/ingredients" },
     { label: "Cart", href: "/cart" },
   ];
@@ -36,8 +34,8 @@ export default function Footer() {
               <p className="font-heading text-sm font-semibold text-paper">EptiverOrderlyFramework</p>
             </div>
             <p className="mt-3 font-body text-sm leading-relaxed text-paper/55">
-              The Food Sensitivity Test Kit and Digestive Wellness Drink Mix — a simple at-home
-              food-sensitivity overview, with everyday digestive-wellness support.
+              The Food Sensitivity Test Kit — a simple at-home food-sensitivity overview,
+              read yourself against the included printed key.
             </p>
           </div>
 

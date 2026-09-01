@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Multiple Kits">
-<rect width="800" height="800" fill="#FBF3E7"/>
-<line x1="120" y1="140" x2="680" y2="140" stroke="#C1662F" stroke-width="2"/>
-<line x1="120" y1="560" x2="680" y2="560" stroke="#C1662F" stroke-width="2"/>
-<circle cx="400" cy="350" r="130" fill="none" stroke="#C1662F" stroke-width="2"/>
-<rect x="250" y="280" width="150" height="110" rx="8" fill="#C1662F"/><rect x="410" y="300" width="150" height="110" rx="8" fill="#9A4E22"/>
-<text x="400" y="620" text-anchor="middle" fill="#C1662F" font-family="Georgia,serif" font-size="30">Multiple Kits</text>
-<text x="400" y="662" text-anchor="middle" fill="#8A4A22" font-family="sans-serif" font-size="17" opacity="0.85">EptiverOrderlyFramework</text>
-</svg>

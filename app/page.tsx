@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getMainProduct, getSecondProduct, lowestPrice } from "@/lib/supabase";
+import { getMainProduct, lowestPrice } from "@/lib/supabase";
 import FAQ, { FAQItem } from "@/components/FAQ";
 import HowItWorks from "@/components/HowItWorks";
 import ProductCard from "@/components/ProductCard";
@@ -27,18 +27,16 @@ const WHO = [
 ];
 
 const FAQ_ITEMS: FAQItem[] = [
-  { question: "Is this diagnostic?", answer: "No. The Food Sensitivity Test Kit and Digestive Wellness Drink Mix are for general wellness and informational purposes only. They do not diagnose, treat, or monitor any medical condition." },
+  { question: "Is this diagnostic?", answer: "No. The Food Sensitivity Test Kit is for general wellness and informational purposes only. It does not diagnose, treat, or monitor any medical condition." },
   { question: "How do I read my kit?", answer: "At home, against the printed reference key. Apply a quick finger-prick sample to the included card, wait the stated time, and compare the color pattern. Nothing is sent away, and there is no online step of any kind." },
   { question: "How private is this?", answer: "Your result stays on the card, with you. No online setup is required. Our Privacy Policy explains the limited information collected when you place an order and states that personal information will not be shared with Third Parties." },
   { question: "What's the refund policy?", answer: "You may request a refund within 30 days from the date your order is received. The Refund Policy page has the full step-by-step process and the return address." },
   { question: "How do I contact support?", answer: "By phone or email — both are listed on the Contact page and in the footer of every page." },
-  { question: "What does the drink mix do?", answer: "Digestive Wellness Drink Mix provides supplemental support for a normal digestive-wellness routine. These statements have not been evaluated by the Food and Drug Administration, and the product is not intended to diagnose, treat, cure, or prevent any disease." },
+  { question: "Do I need to send anything away?", answer: "No. You read the card yourself at home against the included printed key. Nothing is mailed anywhere, and there is no online step of any kind." },
 ];
 
 export default function HomePage() {
   const kit = getMainProduct();
-  const mix = getSecondProduct();
-  const bundle = mix.variants.find((v) => v.id === "sachets-3box")!;
 
   return (
     <div>
@@ -52,15 +50,11 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-lg font-body text-base leading-relaxed text-ink/70">
               The Food Sensitivity Test Kit uses a quick finger-prick sample and an included card
-              you read yourself against a printed key. Pair it with Digestive Wellness Drink Mix
-              for everyday digestive-wellness support.
+              you read yourself against a printed key.
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
               <Link href={`/product/${kit.slug}`} className="rounded-md bg-accent px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-panel">
                 Shop the Kit
-              </Link>
-              <Link href={`/product/${mix.slug}`} className="rounded-md border border-accent px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-accent transition hover:bg-accent hover:text-white">
-                Shop the Drink Mix
               </Link>
             </div>
           </div>
@@ -159,29 +153,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BUNDLE OFFER */}
-      <section className="mx-auto max-w-5xl px-5 py-20 lg:px-8">
-        <div className="rounded-md border-2 border-accent bg-white p-8 text-center sm:p-12">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Bundle Offer</p>
-          <h2 className="mt-3 font-heading text-3xl text-ink">{bundle.label}</h2>
-          <p className="mt-2 font-body text-sm text-ink/70">{bundle.detail}</p>
-          <p className="mt-4 font-heading text-5xl text-accent">${bundle.price.toFixed(2)}</p>
-          <Link href={`/product/${mix.slug}`} className="mt-6 inline-block rounded-md bg-panel px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-accent">
-            View Drink Mix Options
-          </Link>
-        </div>
-      </section>
-
-      {/* OUR PRODUCTS */}
+      {/* THE PRODUCT */}
       <section className="bg-panelDeep px-5 py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-2xl">
           <div className="mb-12 text-center">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accentSoft">Our Products</p>
-            <h2 className="mt-3 font-heading text-4xl text-white">Two parts of one routine</h2>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accentSoft">The Product</p>
+            <h2 className="mt-3 font-heading text-4xl text-white">One simple at-home kit</h2>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <ProductCard href={`/product/${kit.slug}`} imageSrc="/images/products/eptiver/kit.svg" imageAlt={kit.heroImageAlt} title={kit.name} blurb="An at-home color-read test card with a printed reference key." fromPrice={lowestPrice(kit)} />
-            <ProductCard href={`/product/${mix.slug}`} imageSrc="/images/products/eptiver/mix.svg" imageAlt={mix.heroImageAlt} title={mix.name} blurb="A mild ginger-citrus powder in single-serve sachets for everyday support." fromPrice={lowestPrice(mix)} />
+          <div className="mx-auto max-w-md">
+            <ProductCard href={`/product/${kit.slug}`} imageSrc="/images/products/eptiver/kit-1.jpg" imageAlt={kit.heroImageAlt} title={kit.name} blurb="An at-home color-read test card with a printed reference key." fromPrice={lowestPrice(kit)} />
           </div>
         </div>
       </section>
