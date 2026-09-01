@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FBF3E7;
+  color: #3A2A1E;
+}
+
+/* Terracotta editorial rule lines */
+.rule-lines {
+  border-top: 2px solid #C1662F;
+  border-bottom: 2px solid #C1662F;
+  padding: 2rem 0;
+}
+.rule-lines::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: #C1662F;
+  margin-bottom: 1rem;
+}
+
+/* Plate / segment circular graphic (food-science feel) */
+.plate {
+  width: 200px;
+  height: 200px;
+  border-radius: 9999px;
+  border: 2px solid #C1662F;
+  position: relative;
+  animation: plate-spin 40s linear infinite;
+}
+.plate::before,
+.plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.plate::before {
+  border-top: 2px solid #C1662F;
+  transform: rotate(60deg);
+}
+.plate::after {
+  border-top: 2px solid #C1662F;
+  transform: rotate(120deg);
+}
+@keyframes plate-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plate { animation: none; }
+}
+
+/* Cream card with terracotta underline on hover */
+.table-card {
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s ease, transform 0.2s ease;
+}
+.table-card:hover {
+  border-color: #C1662F;
+  transform: translateY(-2px);
+}
