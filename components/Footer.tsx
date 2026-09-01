@@ -103,8 +103,7 @@ export default function Footer() {
           </p>
           <p className="text-xs leading-relaxed text-paper/50">
             These statements have not been evaluated by the Food and Drug Administration. This
-            product is not intended to diagnose, treat, cure, or prevent any disease. The Sleep
-            Assessment Device is intended for general wellness and informational purposes and is
+            product is not intended to diagnose, treat, cure, or prevent any disease. The Food Sensitivity Test Kit is intended for general wellness and informational purposes and is
             not a substitute for professional medical advice, diagnosis, or treatment.
           </p>
           <p className="text-xs text-paper/40">
