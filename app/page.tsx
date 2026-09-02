@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getMainProduct, lowestPrice } from "@/lib/supabase";
 import FAQ, { FAQItem } from "@/components/FAQ";
 import HowItWorks from "@/components/HowItWorks";
@@ -58,8 +59,11 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className="plate" aria-hidden />
+          <div className="relative mx-auto w-full max-w-md">
+            <div aria-hidden className="absolute -inset-5 rounded-[2rem] bg-accent/15 blur-3xl" />
+            <div className="relative overflow-hidden rounded-md border border-line bg-white shadow-soft">
+              <Image src="/images/products/eptiver/kit-1.jpg" alt="Food Sensitivity Test Kit" width={1024} height={1024} className="h-full w-full object-cover" priority />
+            </div>
           </div>
         </div>
       </section>
@@ -109,8 +113,10 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-md border border-line bg-white p-10 text-center shadow-soft">
-            <div className="plate mx-auto" aria-hidden />
+          <div className="rounded-md border border-line bg-white p-6 text-center shadow-soft">
+            <div className="overflow-hidden rounded">
+              <Image src="/images/products/eptiver/kit-2.jpg" alt="Food Sensitivity Test Kit" width={1024} height={1024} className="h-full w-full object-cover" />
+            </div>
             <p className="mt-6 font-body text-sm text-ink/70">
               A color-read test card and a printed reference key — a general at-home overview,
               nothing to send away.
