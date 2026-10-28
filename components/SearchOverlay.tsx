@@ -62,7 +62,7 @@ export default function SearchOverlay() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search products, options, pages..."
+                placeholder="Search products, categories, pages..."
                 className="flex-1 rounded-full border border-white/15 bg-panelSoft px-4 py-2 font-body text-paper outline-none focus:border-accent"
               />
               <button type="button" onClick={handleClose} aria-label="Close search" className="text-paper">
@@ -82,7 +82,7 @@ export default function SearchOverlay() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Search products, options, pages..."
+              placeholder="Search products, categories, pages..."
               className="w-full rounded-full border border-white/15 bg-panelDeep px-4 py-2 font-body text-sm text-paper outline-none focus:border-accent"
             />
             <SearchResultsList query={query} results={results} onSelect={goTo} />

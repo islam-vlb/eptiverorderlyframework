@@ -22,9 +22,9 @@ const body = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "EptiverOrderlyFramework — Food Sensitivity Test Kit & Digestive Wellness Drink Mix",
+  title: "EptiverOrderlyFramework | General Medical Products with Free Shipping",
   description:
-    "EptiverOrderlyFramework offers the Food Sensitivity Test Kit and Digestive Wellness Drink Mix — a simple at-home food-sensitivity reading, with everyday digestive-wellness support.",
+    "EptiverOrderlyFramework offers braces and supports, pillows and cushions, first aid supplies and daily living aids. Free shipping on every order in the contiguous USA.",
 };
 
 export default function RootLayout({

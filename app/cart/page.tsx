@@ -18,7 +18,7 @@ export default function CartPage() {
       {items.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-line bg-white p-10 text-center shadow-soft">
           <p className="font-body text-sm text-ink/65">Your cart is currently empty.</p>
-          <Link href="/" className="mt-6 inline-block rounded-full bg-panel px-8 py-3 font-heading text-xs font-bold uppercase tracking-[0.12em] text-paper hover:bg-accent hover:text-panel">
+          <Link href="/shop" className="mt-6 inline-block rounded-full bg-panel px-8 py-3 font-heading text-xs font-bold uppercase tracking-[0.12em] text-paper hover:bg-accent hover:text-panel">
             Continue Shopping
           </Link>
         </div>
@@ -27,24 +27,23 @@ export default function CartPage() {
           <div className="lg:col-span-2">
             <ul className="space-y-5">
               {items.map((item) => (
-                <li key={item.variant.id} className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft sm:flex-row sm:items-center">
+                <li key={item.id} className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft sm:flex-row sm:items-center">
                   <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-line bg-panelSoft">
-                    <Image src={item.variant.image} alt={item.productName} fill sizes="96px" className="object-cover" />
+                    <Image src={item.image} alt={item.name} fill sizes="96px" className="object-cover" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-heading text-base font-semibold text-ink">{item.productName}</p>
-                    <p className="font-body text-sm text-ink/60">{item.variant.label}</p>
-                    <p className="font-body text-xs text-ink/50">{item.variant.detail}</p>
+                    <p className="font-heading text-base font-semibold text-ink">{item.name}</p>
+                    <p className="font-body text-sm text-ink/60">{formatPrice(item.price)} each</p>
                   </div>
                   <div className="flex items-center gap-2 rounded-full border border-line px-2 py-1">
-                    <button type="button" aria-label="Decrease quantity" onClick={() => updateQuantity(item.variant.id, item.quantity - 1)} className="flex h-7 w-7 items-center justify-center text-ink hover:bg-accent/10">−</button>
+                    <button type="button" aria-label="Decrease quantity" onClick={() => updateQuantity(item.id, item.quantity - 1)} className="flex h-7 w-7 items-center justify-center text-ink hover:bg-accent/10">−</button>
                     <span className="w-6 text-center text-sm">{item.quantity}</span>
-                    <button type="button" aria-label="Increase quantity" onClick={() => updateQuantity(item.variant.id, item.quantity + 1)} className="flex h-7 w-7 items-center justify-center text-ink hover:bg-accent/10">+</button>
+                    <button type="button" aria-label="Increase quantity" onClick={() => updateQuantity(item.id, item.quantity + 1)} className="flex h-7 w-7 items-center justify-center text-ink hover:bg-accent/10">+</button>
                   </div>
                   <p className="w-24 text-right font-heading text-lg font-semibold text-ink">
-                    {formatPrice(item.variant.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity)}
                   </p>
-                  <button type="button" onClick={() => removeItem(item.variant.id)} className="font-body text-xs text-ink/50 underline hover:text-ink">
+                  <button type="button" onClick={() => removeItem(item.id)} className="font-body text-xs text-ink/50 underline hover:text-ink">
                     Remove
                   </button>
                 </li>
@@ -60,7 +59,7 @@ export default function CartPage() {
             </div>
             <div className="mt-2 flex items-center justify-between font-body text-sm text-ink/70">
               <span>Shipping</span>
-              <span>Included</span>
+              <span>Free shipping ($0.00)</span>
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-line pt-4 font-heading text-xl font-bold text-ink">
               <span>Total</span>

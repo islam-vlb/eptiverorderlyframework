@@ -46,9 +46,10 @@ export default function ContactPage() {
             <p className="mt-1 font-body text-sm text-ink/70">{BUSINESS.email}</p>
           </div>
           <div className="rounded-2xl border border-line bg-white p-6 shadow-soft">
-            <h2 className="font-heading text-base font-semibold text-ink">Legal Address</h2>
+            <h2 className="font-heading text-base font-semibold text-ink">Corporate Address</h2>
             <p className="mt-1 font-body text-sm text-ink/70">Rese Gig LLC</p>
-            <p className="font-body text-sm text-ink/70">8465 Elk Grove Florin Rd Ste 100 #2038, Elk Grove, CA 95624</p>
+            <p className="font-body text-sm text-ink/70">{BUSINESS.legalAddress}</p>
+            <p className="mt-2 font-body text-sm text-ink/70">DBA: {BUSINESS.name} ({BUSINESS.domain})</p>
           </div>
         </div>
 

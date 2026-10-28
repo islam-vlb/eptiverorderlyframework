@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { BUSINESS } from "@/lib/config";
-import { getMainProduct } from "@/lib/supabase";
+import { BUSINESS, THIRD_PARTY_SENTENCE } from "@/lib/config";
+import { CATEGORIES } from "@/lib/products";
 import PaymentIcons from "./PaymentIcons";
 import Logo from "./Logo";
 
 export default function Footer() {
-  const mainProduct = getMainProduct();
-
   const shopLinks = [
-    { label: mainProduct.name, href: `/product/${mainProduct.slug}` },
-    { label: "Ingredients", href: "/ingredients" },
+    { label: "All Products", href: "/shop" },
+    ...CATEGORIES.map((c) => ({ label: c.name, href: `/shop?category=${c.id}` })),
+    { label: "Wishlist", href: "/wishlist" },
     { label: "Cart", href: "/cart" },
   ];
   const companyLinks = [
@@ -23,6 +22,8 @@ export default function Footer() {
     { label: "Refund Policy", href: "/refund" },
     { label: "Shipping Policy", href: "/shipping" },
   ];
+  const linkCls = "font-body text-sm text-paper/65 transition hover:text-accentSoft";
+  const headCls = "font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent";
 
   return (
     <footer className="border-t border-white/10 bg-panelDeep text-paper">
@@ -31,56 +32,45 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <Logo className="h-8 w-8" />
-              <p className="font-heading text-sm font-semibold text-paper">EptiverOrderlyFramework</p>
+              <p className="font-heading text-sm font-semibold text-paper">{BUSINESS.name}</p>
             </div>
             <p className="mt-3 font-body text-sm leading-relaxed text-paper/55">
-              The Food Sensitivity Test Kit — a simple at-home food-sensitivity overview,
-              read yourself against the included printed key.
+              General medical products for mobility, home care, first aid and daily living,
+              shipped free anywhere in the contiguous USA.
             </p>
+            <p className="mt-3 font-body text-sm text-paper/65">DBA: {BUSINESS.name}</p>
           </div>
 
           <div>
-            <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Shop</p>
+            <p className={headCls}>Shop</p>
             <ul className="mt-4 space-y-2">
               {shopLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="font-body text-sm text-paper/65 transition hover:text-accentSoft">
-                    {l.label}
-                  </Link>
-                </li>
+                <li key={l.href + l.label}><Link href={l.href} className={linkCls}>{l.label}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Company</p>
+            <p className={headCls}>Company</p>
             <ul className="mt-4 space-y-2">
               {companyLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="font-body text-sm text-paper/65 transition hover:text-accentSoft">
-                    {l.label}
-                  </Link>
-                </li>
+                <li key={l.href}><Link href={l.href} className={linkCls}>{l.label}</Link></li>
               ))}
             </ul>
-            <p className="mt-6 font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Legal</p>
+            <p className={`mt-6 ${headCls}`}>Legal</p>
             <ul className="mt-4 space-y-2">
               {legalLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="font-body text-sm text-paper/65 transition hover:text-accentSoft">
-                    {l.label}
-                  </Link>
-                </li>
+                <li key={l.href}><Link href={l.href} className={linkCls}>{l.label}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Contact</p>
+            <p className={headCls}>Contact</p>
             <ul className="mt-4 space-y-1.5 font-body text-sm text-paper/65">
               <li>{BUSINESS.phone}</li>
               <li>{BUSINESS.email}</li>
-              <li>Rese Gig LLC, {BUSINESS.legalAddress}</li>
+              <li>{BUSINESS.legalName}, {BUSINESS.legalAddress}</li>
             </ul>
             <div className="mt-4">
               <PaymentIcons className="h-8" />
@@ -91,21 +81,18 @@ export default function Footer() {
 
         <div className="mt-12 space-y-2 border-t border-white/10 pt-6">
           <p className="text-sm font-bold text-paper">
-            Charges will appear as {BUSINESS.descriptor} on your statement
+            Charges will appear as {BUSINESS.descriptor} on your statement.
           </p>
-          <p className="text-sm font-semibold text-paper/90">
-            Personal information will not be shared with Third Parties
-          </p>
-          <p className="text-sm font-bold text-red-600">
-            ⚠️ Individuals under 18 are not permitted to purchase
-          </p>
+          <p className="text-sm font-semibold text-paper/90">{THIRD_PARTY_SENTENCE}</p>
+          <p className="text-sm font-semibold text-paper/90">You must be 18 or older to purchase.</p>
           <p className="text-xs leading-relaxed text-paper/50">
-            These statements have not been evaluated by the Food and Drug Administration. This
-            product is not intended to diagnose, treat, cure, or prevent any disease. The Food Sensitivity Test Kit is intended for general wellness and informational purposes and is
-            not a substitute for professional medical advice, diagnosis, or treatment.
+            Products sold here are general-purpose supports and supplies for everyday use. They
+            are not intended to diagnose, treat, cure, or prevent any condition and are not a
+            substitute for professional medical advice. Ask a qualified healthcare provider about
+            any health concern.
           </p>
           <p className="text-xs text-paper/40">
-            © 2026 Rese Gig LLC — EptiverOrderlyFramework. All rights reserved.
+            &copy; 2026 {BUSINESS.legalName} &mdash; {BUSINESS.domain}. All rights reserved.
           </p>
         </div>
       </div>

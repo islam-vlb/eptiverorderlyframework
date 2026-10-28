@@ -1,68 +1,59 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getMainProduct, lowestPrice } from "@/lib/supabase";
+import { CATEGORIES } from "@/lib/products";
 import FAQ, { FAQItem } from "@/components/FAQ";
-import HowItWorks from "@/components/HowItWorks";
-import ProductCard from "@/components/ProductCard";
 import { MedicalDisclaimer } from "@/components/MedicalDisclaimer";
 
-const INSIDE = [
-  "Food-sensitivity test card",
-  "Single-use lancets for the finger-prick sample",
-  "Sample applicator",
-  "Printed reference key for reading the card",
-  "Quick start guide",
+const OFFER = [
+  { title: "Everyday Supports", body: "Knee and posture braces and a folding seat cane for getting through the day with a little extra support." },
+  { title: "Comfort at Home", body: "Contour and wedge pillows, a gel seat cushion and bedroom and bathroom safety helpers for a more comfortable home." },
+  { title: "Ready for Small Mishaps", body: "A full family first aid kit, bandage and gauze assortments, medical tape and disposable gloves to keep stocked." },
+  { title: "Simple Daily Helpers", body: "A pill organizer, a folding reacher and sturdy shower seating that make daily routines easier to manage." },
 ];
 
-const COVERS = [
-  { title: "A General Overview", body: "The card develops a color pattern you compare against a printed key — a broad wellness overview, not a diagnosis." },
-  { title: "Read At Home", body: "You collect the sample, apply it to the card, and read the result yourself. Nothing is sent away." },
-  { title: "One Reading Per Kit", body: "Each kit includes everything for a single reading. Multiple-kit options are available if more than one person wants to test." },
-  { title: "Not A Medical Test", body: "It does not diagnose, treat, or monitor any condition. Food reactions and health questions belong with a qualified healthcare provider." },
-];
-
-const WHO = [
-  { title: "Curious Eaters", body: "Adults who want a simple, general at-home overview before a conversation with their clinician or dietitian." },
-  { title: "Routine Keepers", body: "People who prefer a low-friction check they can do themselves at home on their own schedule." },
-  { title: "Households", body: "Families who want more than one kit so each person can read their own card." },
+const WHY = [
+  { title: "Plain, Honest Products", body: "Every item is a simple, non-electronic product with clear sizes, weights and contents listed on its page." },
+  { title: "Free Shipping Always", body: "Every order ships free within the contiguous USA, with no minimum and no hidden fees." },
+  { title: "30-Day Returns", body: "If an item is not right, request a return within 30 days from the delivery date." },
 ];
 
 const FAQ_ITEMS: FAQItem[] = [
-  { question: "Is this diagnostic?", answer: "No. The Food Sensitivity Test Kit is for general wellness and informational purposes only. It does not diagnose, treat, or monitor any medical condition." },
-  { question: "How do I read my kit?", answer: "At home, against the printed reference key. Apply a quick finger-prick sample to the included card, wait the stated time, and compare the color pattern. Nothing is sent away, and there is no online step of any kind." },
-  { question: "How private is this?", answer: "Your result stays on the card, with you. No online setup is required. Our Privacy Policy explains the limited information collected when you place an order and states that personal information will not be shared with Third Parties." },
-  { question: "What's the refund policy?", answer: "You may request a refund within 30 days from the date your order is received. The Refund Policy page has the full step-by-step process and the return address." },
-  { question: "How do I contact support?", answer: "By phone or email — both are listed on the Contact page and in the footer of every page." },
-  { question: "Do I need to send anything away?", answer: "No. You read the card yourself at home against the included printed key. Nothing is mailed anywhere, and there is no online step of any kind." },
+  { question: "What do you sell?", answer: "General medical products for everyday use: supports and braces, pillows and cushions, bathroom and bedroom safety helpers, first aid supplies and daily living aids. Everything is non-electronic." },
+  { question: "Are these products medical advice or treatment?", answer: "No. They are general-purpose supports and supplies. They are not intended to diagnose, treat, cure, or prevent any condition, so please ask a qualified healthcare provider about any health concern." },
+  { question: "How much is shipping?", answer: "Shipping is free on every order. Orders ship within 1-3 business days and arrive in 3-7 business days within the contiguous USA." },
+  { question: "What is the return policy?", answer: "You may request a return within 30 days from the delivery date. The Refund Policy page has the full process and the return address." },
+  { question: "Which cards do you accept?", answer: "We accept Visa and Mastercard. Your card statement will show EptiverOrderlyFramewor for this one-time payment." },
+  { question: "How do I contact support?", answer: "By phone at (844) 477-1945 or by email at support@eptiverorderlyframework.com. Both are also on the Contact page and in every footer." },
 ];
 
 export default function HomePage() {
-  const kit = getMainProduct();
-
   return (
     <div>
-      {/* HERO — cream, editorial rules, plate graphic */}
+      {/* HERO */}
       <section className="bg-paper">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
           <div className="rule-lines">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Food-Sensitivity Assessment</p>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">General Medical Products</p>
             <h1 className="mt-4 font-heading text-5xl leading-[1.03] text-ink sm:text-6xl">
-              A calm overview, read at your own table.
+              Everyday care, kept simple.
             </h1>
             <p className="mt-5 max-w-lg font-body text-base leading-relaxed text-ink/70">
-              The Food Sensitivity Test Kit uses a quick finger-prick sample and an included card
-              you read yourself against a printed key.
+              EptiverOrderlyFramework offers braces and supports, home care comfort, first aid
+              supplies and daily living aids, delivered free to your door.
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
-              <Link href={`/product/${kit.slug}`} className="rounded-md bg-accent px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-panel">
-                Shop the Kit
+              <Link href="/shop" className="rounded-md bg-accent px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-panel">
+                Shop All Products
+              </Link>
+              <Link href="/about" className="rounded-md border border-ink px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-ink transition hover:bg-ink hover:text-paper">
+                About Us
               </Link>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-md">
+          <div className="relative mx-auto w-full max-w-lg">
             <div aria-hidden className="absolute -inset-5 rounded-[2rem] bg-accent/15 blur-3xl" />
             <div className="relative overflow-hidden rounded-md border border-line bg-white shadow-soft">
-              <Image src="/images/products/eptiver/kit-1.jpg" alt="Food Sensitivity Test Kit" width={1024} height={1024} className="h-full w-full object-cover" priority />
+              <Image src="/images/site/hero.png" alt="Wedge pillow, first aid case and weekly pill organizer on a wooden table" width={1376} height={768} className="h-full w-full object-cover" priority />
             </div>
           </div>
         </div>
@@ -72,8 +63,8 @@ export default function HomePage() {
       <section className="bg-panel text-white">
         <div className="mx-auto grid max-w-6xl grid-cols-2 px-5 lg:grid-cols-4 lg:divide-x lg:divide-white/10 lg:px-8">
           {[
-            { label: "Shipping included", note: "No fee, every order" },
-            { label: "30-day returns", note: "From the date received" },
+            { label: "Free shipping", note: "Every order, $0.00" },
+            { label: "30-day returns", note: "From the delivery date" },
             { label: "One-time payment", note: "No subscriptions" },
             { label: "Visa & Mastercard", note: "Secure checkout" },
           ].map((t) => (
@@ -85,55 +76,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="bg-panelDeep px-5 py-20 lg:px-8">
-        <HowItWorks
-          headline="Your Food Sensitivity Test Kit, Made Simple"
-          subheadline="Simple testing. Immediate results. All from the comfort of home."
-          steps={[
-            { title: "Order & Receive Your Kit", body: "Choose the kit option that fits your needs at checkout, and it ships with everything needed for one reading." },
-            { title: "Test at Home", body: "Collect a quick finger-prick sample and apply it to the included test card, following the simple included instructions." },
-            { title: "Get Instant Results", body: "Read the card against the printed reference key right at your table. No clinic visit, nothing to send away, and no account to set up." },
-          ]}
-        />
-      </section>
-
-      {/* INSIDE THE KIT */}
+      {/* CATEGORIES */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Inside The Kit</p>
-            <h2 className="mt-3 font-heading text-4xl text-ink">Everything for one reading</h2>
-            <ul className="mt-6 space-y-3">
-              {INSIDE.map((item) => (
-                <li key={item} className="flex items-start gap-3 border-b border-line pb-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span className="font-body text-sm text-ink/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-md border border-line bg-white p-6 text-center shadow-soft">
-            <div className="overflow-hidden rounded">
-              <Image src="/images/products/eptiver/kit-2.jpg" alt="Food Sensitivity Test Kit" width={1024} height={1024} className="h-full w-full object-cover" />
-            </div>
-            <p className="mt-6 font-body text-sm text-ink/70">
-              A color-read test card and a printed reference key — a general at-home overview,
-              nothing to send away.
-            </p>
-          </div>
+        <div className="mb-12 max-w-2xl">
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Browse By Category</p>
+          <h2 className="mt-3 font-heading text-4xl text-ink">Four simple places to start</h2>
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {CATEGORIES.map((c) => (
+            <Link key={c.id} href={`/shop?category=${c.id}`} className="table-card group block overflow-hidden rounded-md border border-line bg-white shadow-soft">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image src={c.image} alt={c.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
+              </div>
+              <div className="px-6 py-5">
+                <h3 className="font-heading text-2xl text-ink">{c.name}</h3>
+                <p className="mt-1 font-body text-sm text-ink/65">{c.blurb}</p>
+                <span className="mt-3 inline-block font-body text-xs font-bold uppercase tracking-[0.12em] text-accent">Shop {c.name} &rarr;</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* WHAT THIS OVERVIEW COVERS */}
+      {/* WHAT WE OFFER */}
       <section className="bg-panel px-5 py-20 text-white lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 max-w-2xl">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accentSoft">What This Overview Covers</p>
-            <h2 className="mt-3 font-heading text-4xl">Clear about what it is</h2>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accentSoft">What We Offer</p>
+            <h2 className="mt-3 font-heading text-4xl">Practical items for real life</h2>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {COVERS.map((c) => (
+            {OFFER.map((c) => (
               <div key={c.title} className="rounded-md border border-white/10 bg-panelSoft p-6">
                 <h3 className="font-heading text-xl">{c.title}</h3>
                 <p className="mt-2 font-body text-sm leading-relaxed text-white/70">{c.body}</p>
@@ -143,14 +116,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHO IT'S FOR */}
+      {/* WHY */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8">
         <div className="mb-12 text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Made For</p>
-          <h2 className="mt-3 font-heading text-4xl text-ink">Who It&apos;s For</h2>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Our Approach</p>
+          <h2 className="mt-3 font-heading text-4xl text-ink">Why shop with us</h2>
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {WHO.map((w) => (
+          {WHY.map((w) => (
             <div key={w.title} className="border-t-2 border-accent pt-6">
               <h3 className="font-heading text-2xl text-ink">{w.title}</h3>
               <p className="mt-2 font-body text-sm leading-relaxed text-ink/70">{w.body}</p>
@@ -159,21 +132,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THE PRODUCT */}
-      <section className="bg-panelDeep px-5 py-20 lg:px-8">
-        <div className="mx-auto max-w-2xl">
-          <div className="mb-12 text-center">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.3em] text-accentSoft">The Product</p>
-            <h2 className="mt-3 font-heading text-4xl text-white">One simple at-home kit</h2>
-          </div>
-          <div className="mx-auto max-w-md">
-            <ProductCard href={`/product/${kit.slug}`} imageSrc="/images/products/eptiver/kit-1.jpg" imageAlt={kit.heroImageAlt} title={kit.name} blurb="An at-home color-read test card with a printed reference key." fromPrice={lowestPrice(kit)} />
-          </div>
-        </div>
-      </section>
-
-      <div className="mx-auto max-w-3xl px-5 py-12 lg:px-8">
-        <MedicalDisclaimer variant="device" />
+      <div className="mx-auto max-w-3xl px-5 pb-12 lg:px-8">
+        <MedicalDisclaimer />
       </div>
 
       {/* FAQ */}
