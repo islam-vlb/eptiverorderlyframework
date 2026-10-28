@@ -50,7 +50,7 @@ export default function AddToCartPanel({ product }: { product: Product }) {
       </div>
 
       <div className="mt-6 flex flex-col gap-3 border-t border-line pt-6">
-        <PaymentIcons className="h-9" />
+        <PaymentIcons size="checkout" />
         <p className="font-body text-xs uppercase tracking-[0.1em] text-ink/70">
           Charges appear as {BUSINESS.descriptor} on your statement
         </p>

@@ -73,7 +73,7 @@ export default function Footer() {
               <li>{BUSINESS.legalName}, {BUSINESS.legalAddress}</li>
             </ul>
             <div className="mt-4">
-              <PaymentIcons className="h-8" />
+              <PaymentIcons size="footer" />
             </div>
             <p className="mt-2 font-body text-xs text-paper/55">Visa &amp; Mastercard accepted</p>
           </div>

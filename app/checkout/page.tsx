@@ -91,7 +91,7 @@ export default function CheckoutPage() {
             <div className="rounded-md border border-line bg-white p-6 shadow-soft">
               <h2 className="font-heading text-lg text-ink">Payment</h2>
               <div className="mt-3">
-                <PaymentIcons className="h-10" />
+                <PaymentIcons size="checkout" />
               </div>
               <p className="mt-2 font-body text-xs text-ink/60">We accept Visa and Mastercard only.</p>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">

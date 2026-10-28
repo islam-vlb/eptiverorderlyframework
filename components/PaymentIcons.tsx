@@ -1,37 +1,16 @@
-export default function PaymentIcons({ className = "h-8" }: { className?: string }) {
+/* eslint-disable @next/next/no-img-element */
+export default function PaymentIcons({ size = "footer" }: { size?: "footer" | "checkout" }) {
+  const h = size === "checkout" ? 30 : 26;
+  const chip = "flex items-center gap-2 border border-ink/25 bg-white px-2.5 py-1.5";
   return (
-    <div className="flex items-center gap-3">
-      <svg
-        viewBox="0 0 50 32"
-        className={`${className} w-auto rounded`}
-        aria-label="Visa"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="50" height="32" rx="5" fill="#1A1F71" />
-        <text
-          x="25"
-          y="21"
-          textAnchor="middle"
-          fill="white"
-          fontSize="13"
-          fontWeight="bold"
-          fontFamily="Arial, sans-serif"
-          letterSpacing="1"
-        >
-          VISA
-        </text>
-      </svg>
-      <svg
-        viewBox="0 0 50 32"
-        className={`${className} w-auto rounded`}
-        aria-label="Mastercard"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="50" height="32" rx="5" fill="#1C1C1C" />
-        <circle cx="19" cy="16" r="11" fill="#EB001B" />
-        <circle cx="31" cy="16" r="11" fill="#F79E1B" />
-        <path d="M25 7.5a11 11 0 0 1 0 17A11 11 0 0 1 25 7.5z" fill="#FF5F00" />
-      </svg>
+    <div className="flex flex-wrap items-center gap-3">
+      <span className={chip}>
+        <img src="/images/payments/visa.png" alt="Visa" height={h} style={{ height: h, width: "auto" }} />
+      </span>
+      <span className={chip}>
+        <img src="/images/payments/mastercard.png" alt="Mastercard" height={h} style={{ height: h, width: "auto" }} />
+        <span className="font-body text-xs font-semibold text-ink">Mastercard</span>
+      </span>
     </div>
   );
 }
