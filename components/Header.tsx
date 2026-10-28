@@ -19,10 +19,10 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-panel/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 sm:px-5 lg:px-8">
+        <Link href="/" className="flex min-w-0 items-center gap-2">
           <Logo className="h-9 w-9 shrink-0" />
-          <span className="font-heading text-base font-semibold tracking-tight text-paper sm:text-lg">
+          <span className="font-heading text-[13px] font-semibold tracking-tight text-paper sm:text-lg">
             Eptiver<span className="text-accent">Orderly</span>Framework
           </span>
         </Link>
@@ -64,7 +64,7 @@ export default function Header() {
           <Link href="/contact" className={navLink}>Contact</Link>
         </nav>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-0.5">
           <SearchOverlay />
 
           <Link

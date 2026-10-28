@@ -45,7 +45,7 @@ export const PRODUCTS: Product[] = [
       "This weekly organizer has seven day columns, each split into a morning and an evening compartment, so you can sort a week of items ahead of time in a single sitting. Each compartment has its own snap-closed lid.",
       "The clear body lets you see at a glance which compartments are filled. The compact case slides into a drawer, bag or travel pouch.",
     ],
-    included: ["1 weekly organizer with 14 snap-lid compartments", "Day labels molded into each lid"],
+    included: ["1 weekly organizer with 14 snap-lid compartments", "Clear body so each compartment is easy to see"],
     specs: [
       { label: "Compartments", value: "14 (7 days, AM and PM)" },
       { label: "Size", value: "7.5 x 5.5 x 1.1 inches" },

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CATEGORIES } from "@/lib/products";
+import { BUSINESS } from "@/lib/config";
 import FAQ, { FAQItem } from "@/components/FAQ";
 import { MedicalDisclaimer } from "@/components/MedicalDisclaimer";
 
@@ -22,8 +23,8 @@ const FAQ_ITEMS: FAQItem[] = [
   { question: "Are these products medical advice or treatment?", answer: "No. They are general-purpose supports and supplies. They are not intended to diagnose, treat, cure, or prevent any condition, so please ask a qualified healthcare provider about any health concern." },
   { question: "How much is shipping?", answer: "Shipping is free on every order. Orders ship within 1-3 business days and arrive in 3-7 business days within the contiguous USA." },
   { question: "What is the return policy?", answer: "You may request a return within 30 days from the delivery date. The Refund Policy page has the full process and the return address." },
-  { question: "Which cards do you accept?", answer: "We accept Visa and Mastercard. Your card statement will show EptiverOrderlyFramewor for this one-time payment." },
-  { question: "How do I contact support?", answer: "By phone at (844) 477-1945 or by email at support@eptiverorderlyframework.com. Both are also on the Contact page and in every footer." },
+  { question: "Which cards do you accept?", answer: `We accept Visa and Mastercard. Your card statement will show ${BUSINESS.descriptor} for this one-time payment.` },
+  { question: "How do I contact support?", answer: `By phone at ${BUSINESS.phone} or by email at ${BUSINESS.email}. Both are also on the Contact page and in every footer.` },
 ];
 
 export default function HomePage() {

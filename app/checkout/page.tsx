@@ -12,17 +12,31 @@ import PaymentIcons from "@/components/PaymentIcons";
 const inputCls =
   "rounded-md border border-line px-4 py-2.5 font-body text-sm outline-none focus:border-accent";
 
+function isVisaOrMastercard(value: string): boolean {
+  const d = value.replace(/D/g, "");
+  if (d.length !== 16) return false;
+  const visa = d.startsWith("4");
+  const mc = /^5[1-5]/.test(d) || (Number(d.slice(0, 4)) >= 2221 && Number(d.slice(0, 4)) <= 2720);
+  return visa || mc;
+}
+
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCart();
   const router = useRouter();
   const [agreed, setAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [card, setCard] = useState("");
+  const [cardError, setCardError] = useState("");
 
   const total = subtotal;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!agreed || items.length === 0) return;
+    if (!isVisaOrMastercard(card)) {
+      setCardError("Only Visa and Mastercard cards are accepted. Please enter a valid Visa or Mastercard number.");
+      return;
+    }
     setSubmitting(true);
     const orderNumber = `EOF-${Date.now().toString().slice(-8)}`;
     try {
@@ -81,7 +95,8 @@ export default function CheckoutPage() {
               </div>
               <p className="mt-2 font-body text-xs text-ink/60">We accept Visa and Mastercard only.</p>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <input required placeholder="Card Number" inputMode="numeric" autoComplete="cc-number" className={`sm:col-span-2 ${inputCls}`} />
+                <input required placeholder="Card Number" inputMode="numeric" autoComplete="cc-number" value={card} onChange={(e) => { setCard(e.target.value); setCardError(""); }} className={`sm:col-span-2 ${inputCls}`} />
+                {cardError && <p role="alert" className="sm:col-span-2 font-body text-sm font-semibold text-red-700">{cardError}</p>}
                 <input required placeholder="MM / YY" autoComplete="cc-exp" className={inputCls} />
                 <input required placeholder="CVV" inputMode="numeric" autoComplete="cc-csc" className={inputCls} />
               </div>
