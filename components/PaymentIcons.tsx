@@ -9,7 +9,6 @@ export default function PaymentIcons({ size = "footer" }: { size?: "footer" | "c
       </span>
       <span className={chip}>
         <img src="/images/payments/mastercard.png" alt="Mastercard" height={h} style={{ height: h, width: "auto" }} />
-        <span className="font-body text-xs font-semibold text-ink">Mastercard</span>
       </span>
     </div>
   );
